@@ -1,9 +1,14 @@
 from flask import Flask
 
-def create_app():
-    app = Flask(__name__)
+# Flask 애플리케이션 생성
+app = Flask(__name__)
 
-    from application.api import bp as index_bp
-    app.register_blueprint(index_bp)
+# 기본 경로("/")로 들어오는 요청에 대한 응답
+@app.route('/')
+def hello():
+    return "Hello, World!"
 
-    return app
+# 애플리케이션 실행
+if __name__ == '__main__':
+    # 디버그 모드에서 실행
+    app.run(debug=True)
